@@ -117,7 +117,7 @@ export default function Home() {
   const GenAiCode = async() => {
     setProgress(50);
     const prompt = JSON.stringify(message) + AIPROMPT;
-    const req = await axios.post('/api/code', {prompt}); 
+    const req = await axios.post('/api/code', {prompt}, {timeout: 60000}); 
     const mergedFiles =  {...files, ...req.data?.files};
     setFiles(mergedFiles);
     setProgress(85);
